@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.sizes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.size-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #f2f2f2;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 13px;
+}
+
+.size-btn:hover {
+  background: #333;
+  color: white;
+}
+
+.size-btn.active {
+  background: #000;
+  color: white;
+}
+
+.price-box {
+  background: #000;
+  color: white;
+  border-radius: 8px;
+  min-width: 160px;
+  margin-top: 18px;
+  padding: 10px 24px;
+  display: inline-block;
+}
+
+.price-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  opacity: 0.75;
+  margin-bottom: 3px;
+}
+
+.price-value {
+  font-size: 26px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.animate {
+  transform: scale(1.08);
+}
+</style>
+</head>
+
+<body>
+
+<h2>PILIH SIZE</h2>
+
+<div class="sizes">
+  <button class="size-btn active" onclick="ubahHarga(this, 'Rp450.000')">50</button>
+  <button class="size-btn" onclick="ubahHarga(this, 'Rp450.000')">52</button>
+  <button class="size-btn" onclick="ubahHarga(this, 'Rp450.000')">54</button>
+  <button class="size-btn" onclick="ubahHarga(this, 'Rp450.000')">56</button>
+  <button class="size-btn" onclick="ubahHarga(this, 'Rp500.000')">58</button>
+</div>
+
+<div class="price-box">
+  <div class="price-label">HARGA</div>
+  <div class="price-value" id="harga">Rp450.000</div>
+</div>
+
+<script>
+function ubahHarga(btn, harga) {
+
+  document.querySelectorAll('.size-btn').forEach(function(button) {
+    button.classList.remove('active');
+  });
+
+  btn.classList.add('active');
+
+  const hargaElement = document.getElementById('harga');
+
+  hargaElement.textContent = harga;
+
+  hargaElement.classList.add('animate');
+
+  setTimeout(function() {
+    hargaElement.classList.remove('animate');
+  }, 300);
+}
+</script>
+
+</body>
+</html>
