@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rental Price Selector</title>
+
+<style>
+body{
+    text-align:center;
+    font-family:Arial, sans-serif;
+    margin:20px;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+h2{
+    font-family:"Times New Roman", serif;
+    font-size:14px;
+    font-weight:normal;
+    letter-spacing:1px;
+    margin-bottom:12px;
+}
+
+.sizes{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:4px;
+}
+
+.size-btn{
+    padding:8px 14px;
+    border:none;
+    border-radius:8px;
+    background:#f2f2f2;
+    cursor:pointer;
+    transition:all .3s ease;
+    font-size:13px;
+}
+
+.size-btn:hover{
+    background:#333;
+    color:white;
+}
+
+.size-btn.active{
+    background:black;
+    color:white;
+}
+
+.price-box{
+    margin-top:18px;
+    display:inline-block;
+    padding:10px 24px;
+    background:black;
+    color:white;
+    border-radius:12px;
+    min-width:160px;
+}
+
+.price-label{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    opacity:.75;
+    margin-bottom:3px;
+}
+
+.price-value{
+    font-size:26px;
+    font-weight:700;
+    transition:all .3s ease;
+}
+
+.price-value.animate{
+    transform:scale(1.08);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<h2>Choose Your Size</h2>
+
+<div class="sizes">
+    <button class="size-btn active" onclick="ubahHarga(this,'Rp450.000')">50</button>
+    <button class="size-btn" onclick="ubahHarga(this,'Rp450.000')">52</button>
+    <button class="size-btn" onclick="ubahHarga(this,'Rp450.000')">54</button>
+    <button class="size-btn" onclick="ubahHarga(this,'Rp450.000')">56</button>
+    <button class="size-btn" onclick="ubahHarga(this,'Rp500.000')">58</button>
+</div>
+
+<div class="price-box">
+    <div class="price-label">Rental Price</div>
+    <div class="price-value" id="harga">
+        Rp450.000
+    </div>
+</div>
+```
+
+</div>
+
+<script>
+function ubahHarga(btn, harga){
+
+    document.querySelectorAll('.size-btn')
+        .forEach(b => b.classList.remove('active'));
+
+    btn.classList.add('active');
+
+    const price = document.getElementById('harga');
+
+    price.innerHTML = harga;
+
+    price.classList.add('animate');
+
+    setTimeout(() => {
+        price.classList.remove('animate');
+    }, 300);
+}
+</script>
+
+</body>
+</html>
+
